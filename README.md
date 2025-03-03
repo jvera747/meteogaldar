@@ -1,2 +1,2 @@
 # meteogaldar
-Información meteorológica
+Información meteorológica de Canarias

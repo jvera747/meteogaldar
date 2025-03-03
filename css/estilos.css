@@ -1,0 +1,496 @@
+﻿/* variables en css */
+:root{
+    --color1: rgb(219,144,.5);
+    --color2: rgba(23, 180, 83, 0.877);
+    --color3: rgba(11,194,211, 0.623);
+    --fondo: #f2f2f2;
+    --titulos: 33px;
+    /* --margenes: 60px; */
+    --margenes: 20px;
+    --espacios: 10px;
+    --espacios-contenido:45px;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'open sans';
+    /* background: var(--fondo); */
+
+}
+
+.container{
+  /* width: 90%;
+	max-width: 1000px;
+	margin: 20px auto; *//* 20 arriba y abajo y con auto la centra*/
+	display: grid;
+	grid-gap: 20px; /* espaciados entre los div */
+	grid-template-columns: repeat(4, 1fr); /* 3 columnas del mismo tamaño*/
+	grid-template-rows: repeat(4, auto); /* 4 filas con tamaño automático*/
+
+	/* grid-template-areas: "header header header"
+						 "contenido contenido sidebar"
+						 "footer footer footer"; */
+  grid-template-areas: "header header header header"
+                        "contenido contenido contenido sidebar"
+                        "pred-aemet pred-aemet pred-windy pred-windy"
+                        "footer footer footer footer";
+}
+
+img{
+    vertical-align: top;
+}
+.pred-aemet{
+  grid-area: pred-aemet;
+}
+.pred-windy{
+  grid-area: pred-windy;
+}
+
+/* PRELOADER */
+
+.hidden{
+    overflow: hidden;
+}
+  
+.centrado{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    /* background: #000; */
+    background: #fff;
+    z-index: 100; /* Para que no aparezca el nav */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #cef;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+/* Fin Preloader */
+
+/* Header */
+
+header{
+    width: 100%;
+    height:400px;
+    /* Gradiente */
+    /* background: linear-gradient(to bottom,
+        rgba(211,135,20, .6),
+        rgba(29,241,171, .6),
+        rgba(7,109,150, .45)
+        ), 
+        url(../img/fondo.jpeg); */
+        background: url(../img/fondo.jpeg);
+
+    background-attachment: fixed;/* efecto paralax */
+    background-position: center;
+    background-size: cover; /* toda la pantalla */
+    position: relative;/*añadido para efecto wave*/
+    grid-area: header;
+}
+
+nav{
+    width: 100%;
+    position: fixed; 
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.5)
+}
+.nav1{
+    background: transparent;
+    height: 80px;
+    color:#fff;
+}
+.nav2{
+    /* background: var(--fondo); */
+    background: url(../img/fondo.jpeg);
+    height:100px;
+    /* color:#000; */
+    color:#fff;
+}
+
+.contenedor-nav{
+    display: flex;
+    margin: auto;/* centrado */
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width:1000px; */
+    height:inherit; /* heredado de su padre */
+    overflow: hidden; /* lo que se sobrepase se oculta */
+}
+.logo{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  color: #fe9f5a;
+}
+nav .enlaces a{
+    display: inline-block;
+    padding: 5px 0;
+    margin-right: 17px;
+    font-size: 17px;
+    font-weight: 300;
+    text-decoration: none;
+    border-bottom: 3px solid transparent; /* hover:subrayado */
+    color: inherit; /* heredado de su padre */
+}
+nav .enlaces a:hover{
+    /* border-bottom: 3px solid #1498a4; */
+    border-bottom: 3px solid var(--color1);
+    transition: 0.6s;
+}
+.logo, .logo img{ 
+    /* height:80px; */
+    height:60px;
+}
+.icono{ /* Menu Hamburguesa */
+    display:none;
+    font-size: 24px;
+    padding: 23.5px 20px;
+}
+.menu-hamburguesa{
+	color: #fe9f5a;
+}
+header .textos-header{
+  display: flex;
+  height: 430px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.textos-header h1{
+  font-size: 50px;
+  color: #fff;
+}
+.textos-header h2{
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
+}
+/* .wave{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+} */
+
+/* Main */
+main{
+  grid-area: contenido;
+}
+.contenedor{
+    margin:auto;
+    padding: var(--margenes) 0;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    overflow: hidden;
+}
+.contenedor-twiter{
+  /* margin:auto; */
+  padding: var(--margenes) 0;
+  /* width: 30%;
+  max-width: 200px;
+  height: 300px;
+  max-width: 300px; */
+  text-align: center;
+  overflow: hidden;
+}
+.contenedor h3{
+    font-size: var(--titulos);
+    color: var(--color1);
+    margin-bottom: var(--espacios);
+  }
+  
+.contenedor p{
+    font-size: var(--subtitulos);
+    font-weight: 300;
+    color: var(--color1);
+    /* background: var(--color1); */
+}
+.contenedor a{
+  text-decoration: none;
+}
+
+/* añade una caja después de los elemento <p> con clase after */
+.after::after{ 
+    content:'';
+    display: block;
+    margin: auto;
+    margin-top: var(--espacios);
+    width: 100px;
+    height: 2px;
+    background: var(--color1);
+    margin-bottom: var(--espacios-contenido);
+}
+
+/* Cards */
+.card{
+    display: flex;
+    justify-content: space-around; /* para el sombreado */
+    flex-wrap: wrap;
+    /* background: var(--color1); */
+}
+.content-card{
+    width: 31%;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+    overflow: hidden;
+    height:300px;
+}
+.avisos{
+    width: 31%;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+    overflow: hidden;
+    height:230px;/*250*/
+}
+.modelos{
+    width: 23%;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+    overflow: hidden;
+    height:225px;/*250*/
+}
+.prediccion{
+    /* width: 67%; */
+    width: 95%;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+    overflow: hidden;
+    /* height:190px */;
+    height: 250px;
+}
+.prediccion .people{/* Altura para las imágenes de los card */
+  /* height: 80%; */
+  height: 100%;
+}
+.people{/* Altura para las imágenes de los card */
+    /* height: 80%; */
+    height: 90%;
+}
+.modelos .people{/* Altura para las imágenes de los card de modelos*/
+  height: 82%;
+}
+/* .content-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}*/ 
+.content-card img{
+  width: 100%;
+  height: auto;
+}
+
+#img-avisos-hoy-aemet{
+  width: 100%;
+  height: auto;
+}
+#img-avisos-mna-aemet{
+  width: 100%;
+  height: auto;
+}
+#img-avisos-pmna-aemet{
+  width: 100%;
+  height: auto;
+}
+
+@supports(object-fit: cover){
+  .content-card img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+
+
+
+.texto-team{
+   /*  height: 20%; */
+   height: 10%;
+    width: 100%;
+    padding: var(--espacios) 0;
+}
+.texto-team-avisos{
+   /*  height: 20%; */
+   height: 20%;
+    width: 100%;
+    padding: var(--espacios) 0;
+}
+
+
+.sidebar{
+  /* grid-column: 3 / 4; */
+  grid-area: sidebar;
+}
+
+/* Footer */
+
+footer{
+  background: url(../img/teclado.jpg);
+  grid-area: footer;
+}
+.marca-logo{
+  width: 40%;
+  margin: auto;
+  margin-bottom: var(--espacios);
+}
+
+.marca-logo img{
+  width: 100%;
+}
+.iconos{
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  width: 100%;
+}
+.fab{
+  font-size:60px;
+  color: #FFF;
+  margin-bottom: var(--espacios);
+  display: inline-block;
+}
+footer p{
+  margin-top:var(--espacios);
+}
+
+
+
+
+/* @media screen and (max-width: 750px){ */
+  @media screen and (max-width: 900px){
+    .container {
+      grid-template-areas: "header header header header"
+                              "contenido contenido sidebar sidebar"
+                              "pred-aemet pred-aemet pred-aemet pred-aemet"
+                              "pred-windy pred-windy pred-windy pred-windy"
+                              "footer footer footer footer";
+    }
+    .nav2{
+      color: #fff;
+    }
+  
+    .icono{
+      display:block;
+      cursor: pointer;
+    }
+  
+    .enlaces{
+      position: fixed;
+      top:80px;
+      background: #2c3e50;
+      left: 0;
+      height: 100%;
+      transition: 1s;
+      width: 0;
+      overflow: hidden;
+    }
+  
+    .enlaces a{
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 20px;
+      text-align: center;
+      background: #34495e;
+      color:#fff;
+    }
+  
+    .textos>h1{font-size: 70px;}
+    .textos>h2{font-size:35px;}
+  
+    .content-card{
+      width: 48%;
+      margin-bottom:var(--margenes);
+    }
+
+    .prediccion{
+        width: 95%;
+        margin-bottom:var(--margenes);
+      }
+  
+    :root{
+      --margenes: 30px;
+    }
+  }
+  
+  /* @media screen and (max-width: 500px){ */
+    @media screen and (max-width: 600px){
+    :root{
+      --espacios-contenido: 25px;
+    }
+    .container {
+      grid-template-areas: "header header header header"
+                              "sidebar sidebar sidebar sidebar"
+                              "contenido contenido contenido contenido"
+                              "pred-aemet pred-aemet pred-aemet pred-aemet"
+                              "pred-windy pred-windy pred-windy pred-windy"
+                              "footer footer footer footer";
+    }
+    .logo h1{
+      margin: auto;
+      font-size: 20px;
+    }
+    .content-card{
+      width: 90%;
+    }
+    .sidebar{
+      height: 300px;
+    }
+  
+    .caja-servicios{
+      width: 90%;
+      margin-bottom: var(--margenes);
+    }
+  
+    .cont-work{
+      width: 85%;
+    }
+  
+    .marca-logo{
+      width: 80%;
+    }
+  
+    .iconos{
+      margin: auto;
+    }
+  }
